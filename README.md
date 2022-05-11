@@ -4,3 +4,7 @@ The Large Hadron Collider (LHC) is the world’s largest and most powerful parti
 
 # Data Description
 Each individual datapoint in the dataset contains information about an independent event that has been observed in the detector. More specifically, each event (each row in the dataset) is described by a set of 14 features. The last column indicates if the event corresponds to a signal or a background event. More specifically, each event (each row in the dataset) is described by a set of 14 features. The last column indicates if the event corresponds to a signal or a background event.
+
+# Objective 1
+    • Build a supervised Machine Learning model and evaluate its performance at signal vs. background classification.
+    • Optimize your model to reach the best possible performance.
