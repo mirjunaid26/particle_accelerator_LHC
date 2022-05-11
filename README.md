@@ -7,3 +7,6 @@ Each individual datapoint in the dataset contains information about an independe
 
 # Objective 1
 Build a supervised Machine Learning model and evaluate its performance at signal vs. background classification. Then, optimize the model to reach the best possible performance.
+
+# Objective 2
+Build an unsupervised Machine Learning model and use it to construct a set of events that can be considered as signal events according to the model. Keeping in mind that the class labels cannot be used when training the model. Then, evaluate the performance of the unsupervised model at finding signal events.
