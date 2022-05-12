@@ -2,25 +2,31 @@
 
 # Problem Statement
 
-The Large Hadron Collider (LHC) is the world’s largest and most powerful particle accelerator. The LHC was designed to discover new, unknown particles that may be produced in the collisions. The data collected in the experiments performed at the LHC can be classified as background events (particles that physicists have already discovered) or signal events (new, unknown particles; usually called new physics particles). In this project, we look for a simulated new physics signal that is hidden in a large background.
+The Large Hadron Collider (LHC) is the world’s largest and most powerful particle accelerator. The LHC was designed to discover new, unknown particles that may be produced in the collisions. The data collected in the experiments performed at the LHC can be classified as background events (particles that physicists have already discovered) or signal events (new, unknown particles; usually called new physics particles). In this project, we look for a simulated new physics signal that are hidden in a large background.
 
 # Data Description
 
-Each individual datapoint in the dataset contains information about an independent event that has been observed in the detector. More specifically, each event (each row in the dataset) is described by a set of 14 features. The last column indicates if the event corresponds to a signal or a background event. More specifically, each event (each row in the dataset) is described by a set of 14 features. The last column indicates if the event corresponds to a signal or a background event. In the dataset, there are 492 datapoints with class label value 1 and other 284245 are 0, which is highly unbalanced and makes the model a bit overfitted and biased for class 0. Balancing the unbalanced data by randomly sampling the class with more datapoints. We took 600 random sampled datapoints from class 0 and keeping all the 423 datapoints for class 1.
+Each individual datapoint in the dataset contains information about an independent event that has been observed in the detector. More specifically, each event (each row in the dataset) is described by a set of 14 features. The last column indicates if the event corresponds to a signal or a background event. More specifically, each event (each row in the dataset) is described by a set of 14 features. The last column indicates if the event corresponds to a signal or a background event. In the dataset, there are 492 datapoints with class label value 1 and other 284245 are 0, which is highly unbalanced and makes the model a bit overfitted and biased for class 0. Training a classifier on this labelled and imbalanced dataset will bias towards major class.
+
+Class 0 :  284245  : Background Events
+
+Class 1:      492  : Signal Events
 
 # Supervised Machine Learning Approach
 
-We build a supervised Machine Learning model and evaluate its performance at signal vs. background classification. We run 5 different ML classifiers viz:
+We build a supervised Machine Learning model and evaluate its performance at signal vs. background classification. As we can see that there are 492 datapoints with class value 1 and other 284245 is 0, which is unbalanced and makes the model a bit overfitted and biased for class 0. We balance the unbalanced data by randomly sampling the class with more datapoints. We took 600 random sampled datapoints from class 0 and keeping all the 423 number of datapoints for class 1. So that it is kept balanced. In other words, this step is to deal with the bias-variance trade-off.
+
+We run 5 different ML classifiers viz:
 
 1. Random Forest Classifier
 2. Decision Tree Classifier
 3. KNN
 4. Logistic Regression
 5. SVM
-6. Balanced Baggin Classifier (Decision Tree as Base)
-7. Balanced Baggin Claasifier (Random Forest as Base)
+6. Balanced Bagging Classifier (Decision Tree as Base)
+7. Balanced Bagging Claasifier (Random Forest as Base)
 
-where Balanced Baggin Classifier (Decision Tree as Base) and Balanced Baggin Claasifier (Random Forest as Base) are ensemble model method which takes care of inbalanced data. For each model we check validation and test acc, precision and recall
+where Balanced Bagging Classifier (Decision Tree as Base) and Balanced Bagging Claasifier (Random Forest as Base) are ensemble model method which takes care of inbalanced data. For each model we check validation and test acc, precision and recall
 and also we can see the confusion matrix for validation and test set. We can see from the MODEL_LOGS that BALANCED BAGGIN CLASSIFIER (RANDOM FOREST as BASE) is the best model and most generalized as it has the following metric:
 
 Validation Accuracy : 88.8 %
@@ -35,31 +41,17 @@ Test Precision : 95 %
 
 Test Recall : 90.4 %
 
-So, BALANCED BAGGIN CLASSIFIER (RANDOM FOREST as BASE) performs best among all as an ensemble technique on this dataset.
+So, BALANCED BAGGING CLASSIFIER (RANDOM FOREST as BASE) performs best among all as an ensemble technique on this dataset.
 
 
 # Unsupervised Machine Learning Approach
 
-We approached the signal detection from background as Anomaly detection problem and assumed that each feature is independent in the row.
-
-
-Problems: The main problem is in the dataset. It is highly imbalanced
-
-Class 0 :  284310  : Background Event
-Class 1:      492  : Signal event
-
-
-2. Trainingg a classifier on this labelled and imbalanced will bias towards major class.
-
-Approach:
-
-There are several ways to approach this problem in unsupervised fashion:
+We approached the signal detection from background as Anomaly detection problem and assumed that each feature is independent in the row. There are several ways to approach this problem in unsupervised fashion:
 
 1. Autoencoders can be used in an unsupervised fashion.
-2. K means clustering is also possible but because of class imbalance, it will bias the majority
+2. K-means clustering is also possible but because of class imbalance, it will bias the majority
 samples.
-3. One more approach is to treat this problem as (AD) Anamoly detection problem. Since the
-goal is to detect a signal event from a large background events. This problem is similar to fradulent transation detection or object detection from a large set of background pixels or defect detection in images using machine vision, medical diagnosis and law enforcement. We have used Anamoly approach to solve this problem.
+3. One more approach is to treat this problem as (AD) Anamoly detection problem. Since, the goal is to detect a signal event from a large background events. This problem is similar to fradulent transation detection or object detection from a large set of background pixels or defect detection in images using machine vision, medical diagnosis and law enforcement. We have used Anamoly approach to solve this problem.
 
 There are several Anamoly Detection Models like:
 
@@ -72,7 +64,7 @@ There are several Anamoly Detection Models like:
 We use Isolation Forest.
 
 Steps:
-1. First I look for null values and replace them with zero and then normalization.
+1. First we look for null values and replace them with zero and then normalization.
 2. We analyze various principal components to see which feture has more variance.
 3. We investigate the coorelation between features between backgound and Signal event on p3 and p14 features.
 4. We observe that the p3 and p14 features didn't show any diffrence between signal and background events.
@@ -80,7 +72,7 @@ Steps:
 
 We have only 0.17% signal events from the dataset. This implies random guess by any model should produce 0.17% accuracy for signal detection.
 
-We tested wo models, LocalOutlierFactor and Isolation Forest. Isolation Forest gives better results. 
+We tested two models, LocalOutlierFactor and Isolation Forest. Isolation Forest gives better results. 
 After anayzing the confusion matrix, we can see 201/492 signal can be detected which is apprximately 40% accuracy.
 
 Signal Accuracy  = 201/492 ~ 40%
@@ -89,7 +81,7 @@ Advantages of Isolation Forest:
 Computationaly Efficient and has been proven effective in other anamoly detection problems.
 
 Limtations:
-Model is dependent on contanimaton parameter. i.e., it should be estimated what percentage is Signal beforehand. Also, model suffers from a bias because of branching factor.
+Model is dependent on contanimaton parameter i.e., it should be estimated what percentage is signal beforehand. Also, model suffers from a bias because of branching factor.
 
 
 
