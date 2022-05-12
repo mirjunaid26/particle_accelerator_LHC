@@ -86,9 +86,11 @@ Conf Matrix
 
 Signal Accuracy  = 201/492 ~ 40%
 
-Advantages of Isolation Forest: Computationaly Efficient and has been proven effective in other anamoly detection problems.
+Advantages of Isolation Forest:
+Computationaly Efficient and has been proven effective in other anamoly detection problems.
 
-Limtations: Model is dependent on contanimaton parameter. i.e., it should be estimated what percentage is Signal beforehand. Also, model suffers from a bias because of branching factor.
+Limtations:
+Model is dependent on contanimaton parameter. i.e., it should be estimated what percentage is Signal beforehand. Also, model suffers from a bias because of branching factor.
 
 
 
