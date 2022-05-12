@@ -60,6 +60,7 @@ samples.
 goal is to detect a signal event from a large background events. This problem is similar to fradulent transation detection or object detection from a large set of background pixels or defect detection in images using machine vision, medical diagnosis and law enforcement. We have used Anamoly approach to solve this problem. After analyzing features we found it rarely happens. The signal is being formed.
 
 There are several Anamoly Detection mMdels like
+
 4. Isolation Forest
 5. Local Outlier Factor
 6. Robust Covariance
