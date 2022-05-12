@@ -40,8 +40,6 @@ So, BALANCED BAGGIN CLASSIFIER (RANDOM FOREST as BASE) performs best among all a
 
 # Unsupervised Machine Learning Approach
 
-Approach:
-
 We approached the signal detection from background as Anomaly detection problem and assumed that each feature is independent in the row.
 
 
@@ -51,6 +49,8 @@ Class 0 :  284310  : Background Event
 Class 1:      492  : Signal event
 
 2. Trainingg a classifier on this labelled and imbalanced will bias towards major class.
+
+Approach:
 
 There are several ways to approach this problem in unsupervised fashion:
 
@@ -81,10 +81,6 @@ We have only 0.17% signal events from the dataset. This implies random guess by 
 
 We tested wo models, LocalOutlierFactor and Isolation Forest. Isolation Forest gives better results. 
 After anayzing the confusion matrix, we can see 201/492 signal can be detected which is apprximately 40% accuracy.
-
-Conf Matrix 
-[[272806  11509]
-[291        201]]
 
 Signal Accuracy  = 201/492 ~ 40%
 
