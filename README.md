@@ -12,13 +12,13 @@ Each individual datapoint in the dataset contains information about an independe
 
 We build a supervised Machine Learning model and evaluate its performance at signal vs. background classification. We run 5 different ML classifiers viz:
 
-Random Forest Classifier
-Decision Tree Classifier
-KNN
-Logistic Regression
-SVM
-Balanced Baggin Classifier (Decision Tree as Base)
-Balanced Baggin Claasifier (Random Forest as Base)
+1. Random Forest Classifier
+2. Decision Tree Classifier
+3. KNN
+4. Logistic Regression
+5. SVM
+6. Balanced Baggin Classifier (Decision Tree as Base)
+7. Balanced Baggin Claasifier (Random Forest as Base)
 
 where Balanced Baggin Classifier (Decision Tree as Base) and Balanced Baggin Claasifier (Random Forest as Base) are ensemble model method which takes care of inbalanced data. For each model we check validation and test acc, precision and recall
 and also we can see the confusion matrix for validation and test set. We can see from the MODEL_LOGS that BALANCED BAGGIN CLASSIFIER (RANDOM FOREST as BASE) is the best model and most generalized as it has the following metric:
@@ -43,10 +43,11 @@ So, BALANCED BAGGIN CLASSIFIER (RANDOM FOREST as BASE) performs best among all a
 We approached the signal detection from background as Anomaly detection problem and assumed that each feature is independent in the row.
 
 
-Problems:
-1. Dataset is highly imbalanced
+Problems: The main problem is in the dataset. It is highly imbalanced
+
 Class 0 :  284310  : Background Event
 Class 1:      492  : Signal event
+
 
 2. Trainingg a classifier on this labelled and imbalanced will bias towards major class.
 
