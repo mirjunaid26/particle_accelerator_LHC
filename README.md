@@ -40,8 +40,9 @@ So, BALANCED BAGGIN CLASSIFIER (RANDOM FOREST as BASE) performs best among all a
 
 # Unsupervised Machine Learning Approach
 
-Approached the signal detection from background as Anomaly detection problem
-Assmuptions: Assumed each feature is independent in the row
+Approach:
+
+We approached the signal detection from background as Anomaly detection problem and assumed that each feature is independent in the row.
 
 
 Problems:
