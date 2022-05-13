@@ -1,6 +1,6 @@
 Approached the signal detection from background as Anomaly detection problem
-Assmuptions:
-Assumed each feature is independent in the row
+
+Assumptions: Assumed each feature is independent in the row
 
 
 Problems:
